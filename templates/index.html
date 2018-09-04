@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Django </title>
+</head>
+<body>
+	<h1>{{title}}</h1>   <!-- Here "title" is dynamic -->
+	
+	<!-- <h1>Show the {{title}} Data</h1> -->
+
+
+{% for x in objects_list %}    <!-- Looping through the object -->
+
+<!-- <a>/posts/{{x.id}}">{{x.title}}</a> -->   <!--  Bad Practice for the dynamic url -->   
+<!-- <a href="{% url 'posts:details' x.id %}">{{x.title}}</a><br> -->       <!-- Bad Practice for the dynamic url -->
+
+
+<br>
+<a href='{{ x.get_absolute_url }}'>{{x.title}}</a><br>           
+{{x.content}}<br>
+{{x.updated}}<br>				<!-- Displaying the content via looping --> 
+{{x.timestamp}}<br>
+{{x.id}}<br>
+
+{% endfor %}              <!-- End of Loop -->
+
+
+	
+
+</body>
+</html>
